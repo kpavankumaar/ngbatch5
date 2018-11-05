@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h3>welcome to javascript class</h3>
+	<script type="text/javascript">
+		var name = 'ravi';// string
+		var num = 10 ;
+		var num1 = 20 ;// numbers 
+		name = 40;
+		console.log(name);
+		if(false){// blockcode 
+			console.log(num);
+		}
+		// var friendList = 'lakshmi';
+		// friendList = 'ravi';
+		var friendList = ['lakshmi', 'ravi', 'sneha'];
+		console.log(friendList);
+		function callFriendList(){
+			console.log('lets go to movie ');	
+		}
+
+		function sum(a,b){
+			console.log(a+b);
+		}
+		sum(10,20);
+		var numb = 10 ;
+		while(numb){
+			console.log('print me 10 times');
+			numb = numb - 1
+		}
+		for(var i=0 ; i < 3 ; i = i + 1){
+			// console.log(friendList[i]);
+			var information = prompt(`${friendList[i]} will come to movie ?`);
+			if(information == true){
+				console.log(friendList[i],' lets go to movie ');	
+			}
+			
+		}
+	</script>
+</body>
+</html>

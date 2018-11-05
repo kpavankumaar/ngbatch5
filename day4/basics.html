@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	console.log(b); // ep -> undefined 
+	var a = 20;   // cp undefined-> 20 (ep)
+	var b = a;		// cp undefined -> 20(ep) -> 30(updated because of one function call)
+	console.log(b); // ep prints 20
+	
+	one(); 
+	function one() { // one -> fn one(){}
+		// no cp
+		// next is ep  
+		console.log(b);// value of b is picked from outer env i.e memory space of global execution context
+		b = 30; // replaces the value in global execution context
+		console.log(b); // b -> 30 from gec
+	}
+	one();
+	function two() {// two -> fn two(){}
+		//cp phase new memory space for b and b is assigned with undefined as a value -> undefined is replaced with 10 at line no 24
+		console.log(b); // undefined
+		var b = 10; // 
+		one();
+		console.log(b);// 10
+	}
+	two(); 
+	console.log(b); // prints 10 but was expecting 30
+</script>
+</body>
+</html>
