@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DOM</title>
+	<style type="text/css">
+
+		ul li{
+			width:200px;
+			list-style-type: none;
+			float:left;
+			border:2px solid black;
+			padding:10px;
+		}
+		ul::after,ul::before{
+			content:'';
+			display: block;
+			clear:both;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<p>showme</p>
+		<button>Hide</button>
+		<button>Show</button>
+	</div>
+	<div class="container">
+		<h3>Varun Kumar</h3>
+		<ul>
+			<li>ProductName</li>
+			<li>ItemCost</li>
+		</ul>
+		<ul>
+			<li>Product1</li>
+			<li>costOfProduct1</li>
+		</ul>
+	</div>
+<script type="text/javascript">
+	var table = {
+		make: 'wooden',
+		holdsWeight: function(weight){
+			console.log(weight);
+			console.log('it holds weight upto ', weight);
+		}
+	}
+	// table.holdsWeight()
+
+	var btn = document.getElementsByTagName('button');
+	var content = document.getElementsByTagName('p')[0];
+	btn[0].onclick = function(){
+		content.style.display = 'none';
+		console.log('click on button hide')
+	}
+	btn[1].onclick = function(){
+		content.style.display = 'block';
+	}
+	// while(10){
+	// 	console.log('test')
+	// }
+	console.log('before settimeout')
+	setTimeout(function(){
+		console.log('this is a settimeout ');
+	},0)
+
+	console.log('after timeout');
+	table.holdsWeight();
+	var obj = {
+		name : 'ravi'
+	}
+	// setInterval(function(){
+	// 	console.log('set Interval ');
+	// },2000)
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+html,body,h1,h2,h3,h4,h5,h6,p,ul,ol,li{
+	padding:0px;
+	margin:0px;
+
+	background-color: lightgrey;
+	}
+
+h3,p{
+	border:2px solid black;
+	padding:10px;
+}
