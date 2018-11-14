@@ -21,7 +21,10 @@
 		// var dataOfCust = newData();
 		var numberedArr = [1,2,3,4]
 		var newNumArr = numberedArr.map(function(item){
+			var divEl = document.createElement('div');
+			divEl.innerText = item;
 			console.log(item)
+			document.body.appendChild(divEl);
 			return item * 2;
 		})	
 		var filteredArr = numberedArr.filter(function(item){
