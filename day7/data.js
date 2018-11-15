@@ -191,30 +191,7 @@ var data = [
         "latitude": 17.4400802,
         "longitude": 78.34891679999998
     },
-    {
-        "id": 9,
-        "firstName": "vinay",
-        "lastName": "varma",
-        "gender": "male",
-        "address": "India gate",
-        "city": "Newdelhi ",
-        "state": {
-            "abbreviation": "DL",
-            "name": "Delhi"
-        },
-        "orders": [
-            {
-                "productName": "Frisbee",
-                "itemCost": 2.99
-            },
-            {
-                "productName": "Hat",
-                "itemCost": 5.99
-            }
-        ],
-        "latitude": 28.612912,
-        "longitude": 77.2295097
-    },
+    
     {
         "id": 9,
         "firstName": "rohith",
@@ -550,5 +527,28 @@ var data = [
         ],
         "latitude": 18.7546171,
         "longitude": 73.40623419999997
+    },{
+        "id": 23,
+        "firstName": "vinay",
+        "lastName": "varma",
+        "gender": "male",
+        "address": "India gate",
+        "city": "Newdelhi ",
+        "state": {
+            "abbreviation": "DL",
+            "name": "Delhi"
+        },
+        "orders": [
+            {
+                "productName": "Frisbee",
+                "itemCost": 2.99
+            },
+            {
+                "productName": "Hat",
+                "itemCost": 5.99
+            }
+        ],
+        "latitude": 28.612912,
+        "longitude": 77.2295097
     }
 ]
