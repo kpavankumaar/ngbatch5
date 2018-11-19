@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<input type="radio" id="test" name="test">
+	<input type="radio" id="test1" name="test">
+	<script type="text/javascript">
+		var inputRadio = document.getElementById('test');
+		var inputRadio1 = document.getElementById('test1');
+		inputRadio.onchange = function(e){
+			console.log("input radio ",e);
+		}
+		inputRadio1.onchange = function (e){
+			console.log("input radio1 ",e);
+		}
+	</script>
+</body>
+</html>

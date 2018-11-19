@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var a = 20 ;
+		var b = a; 
+		b = 30;
+		console.log(a)
+		var obj = {
+			name:'ravi'
+		}
+		var obj1 = obj;
+		obj1.name = 'lakshmi';
+		console.log(obj.name);
+		var obj2 = Object.create(obj);
+		obj2.name = 'srikanth';
+		console.log(obj.name);
+		
+		function Address(hno,street,city,state,pincode){
+			this.hno = hno;
+			this.street = street;
+			this.city = city;
+			this.state = state;
+			this.pincode = pincode 
+		}
+
+		function CustInformationForPassport(fname,lname,age,hno,street,city,state,pincode){
+			this.firstname = fname;
+			Address(hno,street,city,state,pincode);
+		}
+		// function CustInformationForPassport(){
+		// 	console.log(this);
+		// }
+
+		var passportApp1 = new CustInformationForPassport('ravi','kumar',10,102,"sap street", 'hyderabad','telangana',50000);
+
+
+	</script>
+</body>
+</html>

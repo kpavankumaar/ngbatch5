@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div>
+		<p></p>
+	</div>
+	<script src="data.js"></script>
+	<script type="text/javascript">
+		var arr = [1,2,3,4,5];
+		var divEl = document.getElementsByTagName('div')[0];
+		arr.map((e)=>{
+			var para = document.createElement('p');
+
+			para.innerText = e;
+			divEl.appendChild(para);
+
+		})
+	</script>
+</body>
+</html>
