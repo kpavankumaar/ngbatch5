@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<script type="text/javascript">
+  function Address(street,city,state){
+    this.street = street;
+    this.city = city;
+    this.state = state;
+  }
+  function User(name,address){
+    // Address.apply(this,address);
+    var newReturnFn = Address.bind(this,address[0]);
+
+    newReturnFn(address[1],address[2]);
+    
+    this.name = name;
+  }
+  var obj = new User('ravi',['street 11', 'hyderabad', ' Telangana'])
+  // var obj = new User('Pavan');
+
+  // console.log(obj.name);
+  // var obj1 = {};
+  // User.call(obj1,'Ravi');
+</script>
+</body>
+</html>

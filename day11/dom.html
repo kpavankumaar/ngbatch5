@@ -2,9 +2,26 @@
 <html>
 <head>
 	<title></title>
+	<style type="text/css">
+		select{
+			width:100px;
+		}
+	</style>
 </head>
 <body>
+<select name="Language"  id="Language" multiple="multiple">
+	<option value="English" id="lan2" >English</option>
+	<option value="Punjabi" id="lan3" >Punjabi</option>
+	<option value="Telugu" id="lan4" >Telgue</option>
+	<option value="Gujarti" id="lan5">Gujarti</option>
+</select>
+<ul>
+	<li>test1</li>
+</ul>
 <script type="text/javascript">
+	var select = document.getElementsByTagName('ul');
+	console.log(select[0].innerHTML);
+	console.log(select[0].innerText);
 	var arr1 = [
 		{
 		       "id": 1,
@@ -55,12 +72,13 @@
 		       "longitude": 78.57727669999997
 		   },
 	]
-	
+
 	for(let i =0 ; i < arr1.length; i++ ){
 		var arr = [];
 		arr.push(arr1[i].firstName);
 		arr.push(arr1[i].lastName);
 		arr.push(arr1[i].orders);
+		
 	}
 </script>
 </body>
