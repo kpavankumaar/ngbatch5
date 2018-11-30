@@ -36,8 +36,10 @@ var tableArr = ['studytable','rectangular','white','wood']
 var chairArr = ['studychair','not round','dark','metal'];
 var bedArr = ['king size','wood'];
 let userOrder1 = new Furniture(tableArr,chairArr,bedArr,'wallmounted shoerack')
-
-
+let userOrder2 = new Furniture(['dinningTable','4*2','dark choclate','wood'],['rollingChair'])
+userOrder2.chair_orderDetails = function(){
+	console.log(this.chair_type);
+}
 
 
 
