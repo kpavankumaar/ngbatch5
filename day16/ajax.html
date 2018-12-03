@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		label{
+			width:100px;
+			display: inline-block;
+		}
+		:invalid{
+			border:2px dashed red;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<div>
+			<label>Username</label><input type="text" name="username">
+		</div>
+		<div>
+			<label>Email</label><input type="email" name="email">
+		</div>
+		<button>Save</button>
+	</form>
+<script type="text/javascript">
+	var xhr = new XMLHttpRequest();
+	var url = 'https://jsonplaceholder.typicode.com/comments';
+	console.log('xhr.readyState',xhr.readyState);
+	xhr.open('get',url, true);
+	console.log('xhr.readyState after open method',xhr.readyState);
+
+	xhr.onload = function(){
+		console.log(xhr.readyState);
+	}
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4 && xhr.status == 200){
+			console.log(xhr.response);
+		}
+	}
+	xhr.send(null);
+</script>
+</body>
+</html>
