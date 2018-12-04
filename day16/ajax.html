@@ -23,21 +23,54 @@
 		<button>Save</button>
 	</form>
 <script type="text/javascript">
-	var xhr = new XMLHttpRequest();
-	var url = 'https://jsonplaceholder.typicode.com/comments';
-	console.log('xhr.readyState',xhr.readyState);
-	xhr.open('get',url, true);
-	console.log('xhr.readyState after open method',xhr.readyState);
+	// function Lead(callback){
+	// 	callback(function(a){
+	// 		this.a = a ;
+	// 	},function(b){
+	// 		return b
+	// 	})
+	// }
 
-	xhr.onload = function(){
-		console.log(xhr.readyState);
+	// Lead(function(resolve,reject){
+	// 	var val = resolve(0) || reject(20)
+	// 	console.log(val);
+	// })
+	// lead.prototype.then = function(){
+
+	// }
+
+	function open(url){
+		return new Promise(function(resolve,reject){
+			var xhr = new XMLHttpRequest();
+			// var url = 'https://jsonplaceholder.typicode.com/comments';
+
+			console.log('xhr.readyState',xhr.readyState);
+			xhr.open('get',url, true);
+			console.log('xhr.readyState after open method',xhr.readyState);
+
+			xhr.onload = function(){
+				console.log(xhr.readyState);
+			}
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4 && xhr.status == 200){
+					// console.log(xhr.response);
+					resolve(xhr.response);
+				}else if(xhr.status !== 200){
+					reject(0);
+				}
+			}
+			xhr.send(null);		
+		});
+		
 	}
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState == 4 && xhr.status == 200){
-			console.log(xhr.response);
-		}
-	}
-	xhr.send(null);
+	var promise = open('https://jsonplaceholder.typicode.com/comments');
+	promise.then(function(val){
+		console.log(val);
+	})
+	open('https://jsonplaceholder.typicode.com/albums').then(function(val){
+		if()
+	})
+	
 </script>
 </body>
 </html>
