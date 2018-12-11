@@ -13,6 +13,7 @@
 	</style>
 </head>
 <body>
+	<button>hide </button> <button>show</button>
 	<form>
 		<div>
 			<label>Username</label><input type="text" name="username">
@@ -56,7 +57,7 @@
 					// console.log(xhr.response);
 					resolve(xhr.response);
 				}else if(xhr.status !== 200){
-					reject(0);
+					reject(xhr.status);
 				}
 			}
 			xhr.send(null);		
@@ -68,7 +69,11 @@
 		console.log(val);
 	})
 	open('https://jsonplaceholder.typicode.com/albums').then(function(val){
-		if()
+		if(val >= 500 ){
+			open('https://jsonplaceholder.typicode.com/albums');
+		}else{
+			console.log(val)
+		}
 	})
 	
 </script>
