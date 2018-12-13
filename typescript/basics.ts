@@ -21,9 +21,19 @@ function employee(language){
 let arr: number[];
 arr = [10,20,30,[]];
 let arr_1: Array<number| string | [] >
-arr_1 =[1,2,3,[],4, function(){}];
-
-var test =function (){
-    return 10
+// arr_1 =[1,2,3,[],4, function(){}];
+// arrow function
+var test = (a,b):number => {
+    console.log(this);
+    return a + b;
+};
+var obj_1 = {
+    keytext: (a,b) => {
+        console.log(this);
+    }
 }
+obj_1.keytext(1,2);
+console.log(test(3,5));
+
+
 
