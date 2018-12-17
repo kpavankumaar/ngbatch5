@@ -1,9 +1,8 @@
 class PetrolEngine{
     engine:string;
     detailsOfEngine(){
-
     }
-    constructor(size){
+    constructor(size?){
         this.engine = size;
     }
 }

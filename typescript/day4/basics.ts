@@ -20,6 +20,10 @@ let electricVehicle:Engine = {
 }
 
 // electricVehicle.type = 10;
-function run():number{
-    return 10;
+function run(arg:number):number{
+    return arg;
 }
+function identity<T>(arg:T):T{
+    return arg;
+}
+

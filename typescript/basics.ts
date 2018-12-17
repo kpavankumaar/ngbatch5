@@ -32,6 +32,7 @@ var obj_1 = {
         console.log(this);
     }
 }
+
 obj_1.keytext(1,2);
 console.log(test(3,5));
 
