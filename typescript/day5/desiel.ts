@@ -1,6 +1,6 @@
-import { Engine } from './engine';
+import { EngineInfo } from './engine';
 
-class Desiel extends Engine{
+class Desiel extends EngineInfo.Engine{
     details(){
         console.log(this.engine)
     }
