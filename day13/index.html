@@ -4,6 +4,19 @@
 	<title></title>
 </head>
 <body>
-<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript">
+	function User(name){
+		this.name = name 
+		// this.userInfo = function(){
+		// 	console.log(this.name)
+		// }
+	}
+	User.prototype.userInfo = function(){
+		console.log(this.name)
+	}
+	var obj = new User('pavan');
+	var obj1 = new User('RAVI');
+	
+</script>
 </body>
 </html>
