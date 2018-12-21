@@ -1,5 +1,5 @@
 export namespace EngineInfo{
-    class Engine {
+    export class Engine {
         // engineType;
     
         constructor(protected engine) {
