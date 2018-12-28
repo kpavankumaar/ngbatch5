@@ -9,10 +9,32 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Angular';
   color = 'lightgreen';
-  toggleColor(){
+  srcPath = './favicon.ico';
+  username = 'krishna';
+  firstName;
+  lastName;
+  num = 0;
+  city = '';
+  phoneNumber = 988889000;
+  streetBlurDetails() {
+
+  }
+  streetDetails(val) {
+    console.log(val);
+  }
+  updatePhoneDetails(val: number) {
+    console.log(val);
+  }
+  toggleColor() {
     this.color = this.color === 'lightgreen' ? 'lightgrey' : 'lightgreen';
   }
-  changeColor(val){
+  firstNameDetails(val: string) {
+    this.firstName = val;
+  }
+  lastNameDetails(val: string) {
+    this.lastName = val;
+  }
+  changeColor(val) {
     console.log(val);
     this.color = val;
   }
