@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
-
+import { Component, Input, OnChanges, Directive } from '@angular/core';
+// @Directive({
+//   selector: 'ngModel',
+  
+// })
+// class NgModel {
+//   constructor(ngForm) {
+    
+//   }
+// }
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   // template:`<h2> welcome to {{title}} </h2>`,
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent  {
   title = 'Angular';
   color = 'lightgreen';
   srcPath = './favicon.ico';
@@ -14,10 +22,16 @@ export class AppComponent {
   firstName;
   lastName;
   num = 0;
-  city = '';
+  city = 'Hyderabad';
   phoneNumber = 988889000;
+  @Input('cityDetails') cityDetail;
+  
   streetBlurDetails() {
 
+  }
+  updateCity(val){
+    this.city = val;
+    console.log(val);
   }
   streetDetails(val) {
     console.log(val);

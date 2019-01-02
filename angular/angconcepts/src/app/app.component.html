@@ -1,19 +1,23 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<app-templatedrivenform></app-templatedrivenform>
 <div style="text-align:center">
   <h1 [style.color] ="color">
     Welcome to {{ title }}!
     {{ 1+2 }}
 
   </h1>
-  <input type="text" [value] = 'username'>
-  <input type="text" placeholder="FirstName" (input)= 'firstNameDetails($event.target.value)'>
-  <input type="text" placeholder="LastName"  (keyup)= 'lastNameDetails($event.target.value)'>
-  <!-- template reference var will recieve the event object when keyup event is triggered -->
-  <input type="number" placeholder="Phone" #phoneNumber (keyup)='updatePhoneDetails(phoneNumber.value)'>
-  <input type="text" placeholder="street" #street (blur) = 'streetBlurDetails(street.value)' (keyup.enter) = 'streetDetails(street.value)'>
-  <input type="text" placeholder="city" [(ngModel)] = 'city' >
-  <button (click) = 'toggleColor()'>toggle color</button>
-  <p>{{firstName =='krishna'}} <span>{{lastName}}</span> <span>street {{street.value}}</span> <span>{{city}}</span></p>
+  <form #loginForm = 'ngForm'>
+    <input type="text" [value] = 'username'>
+    <input type="text" placeholder="FirstName" (input)= 'firstNameDetails($event.target.value)'>
+    <input type="text" placeholder="LastName"  (keyup)= 'lastNameDetails($event.target.value)'>
+    <!-- template reference var will recieve the event object when keyup event is triggered -->
+    <input type="number" placeholder="Phone" #phoneNumber (keyup)='updatePhoneDetails(phoneNumber.value)'>
+    <input type="text" placeholder="street" #street (blur) = 'streetBlurDetails(street.value)' (keyup.enter) = 'streetDetails(street.value)'>
+    <input type="text" name = 'city' placeholder="city" #cityDetails= 'ngModel' ngModel >
+
+    <button (click) = 'toggleColor()'>toggle color</button>
+  </form>
+  <p>{{firstName =='krishna'}} <span>{{lastName}}</span> <span>street {{street.value}}</span> <span>city {{cityDetails.value}}</span></p>
   <p>{{num + 1}}</p>
   <p>{{phoneNumber.value}}</p>
   <select (change) = 'changeColor($event.target.value)'>
