@@ -6,7 +6,7 @@
     {{ 1+2 }}
 
   </h1>
-  <form #loginForm = 'ngForm'>
+  
     <input type="text" [value] = 'username'>
     <input type="text" placeholder="FirstName" (input)= 'firstNameDetails($event.target.value)'>
     <input type="text" placeholder="LastName"  (keyup)= 'lastNameDetails($event.target.value)'>
@@ -16,7 +16,7 @@
     <input type="text" name = 'city' placeholder="city" #cityDetails= 'ngModel' ngModel >
 
     <button (click) = 'toggleColor()'>toggle color</button>
-  </form>
+  
   <p>{{firstName =='krishna'}} <span>{{lastName}}</span> <span>street {{street.value}}</span> <span>city {{cityDetails.value}}</span></p>
   <p>{{num + 1}}</p>
   <p>{{phoneNumber.value}}</p>
