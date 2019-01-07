@@ -1,0 +1,51 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<app-templatedrivenform></app-templatedrivenform>
+<form #loginForm="ngForm">
+
+    <div style="text-align:center">
+      <h1 [style.color]="color">
+        Welcome to {{ title }}!
+        {{1+2}}
+      </h1>
+      <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+      <br>
+        <button (click)='toggleColor()'>Toggle Color</button>
+        <select (change)='changeColor($event.target.color)'>
+          <option>Red</option>
+          <option>Steel Blue</option>
+          <option>Orange</option>
+        </select>
+    
+      <!-- username is called attribute binding because username is fixed . Property binding is differ from atribute binding-->
+      <input type="text" [value]="username"/><br><br>
+      <!-- FirstName,LastName both are called event binding-->
+      <input type="text" placeholder="FirstName" (input)="firstNameDetails($event.target.value)"/>
+      <input type="text" placeholder="LastName" (keyup)="lastNameDetails($event.target.value)"/>
+      <!--
+        Here #phoneNum is used for replacement of $event.target.value because it is too lengthy to type,
+        but #phoneNum is object so to get value we have to write like phoneNum.value
+      -->
+      <input type="text" placeholder ="Phone" #phoneNum (keyup)="updatePhoneDetails(phoneNum.value)"/>
+      <input type="text" placeholder="street" #street (blur)="streetBlurDetails(street.value)" (keyup.enter)="streetDetails(street.value)"/>
+      <!-- ngModel can play both roles as property/even binding-->
+      <input type="text" name = "city" placeholder="city"  #cityDetails="ngModel" ngModel/>
+      <br><br>
+      <span>{{FirstName}}</span><span>{{LastName}}</span><span>{{phoneNum.value}}</span><span>{{street.val}}</span>
+      <span>{{cityDetails.value}}</span>
+    </div>
+</form>
+
+<!-- <h2>Here are some links to help you start: </h2>
+<ul>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+  </li>
+</ul> -->
+
+<router-outlet></router-outlet>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Objects Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var a = 10;
+            var b =a;
+            
+            b = 30;
+            
+            console.log(b);
+            
+            var obj = {
+              name : 'chandu'  
+            };
+            
+            var obj1 = obj;
+            obj1.name = 'purna';
+            console.log(obj1.name);
+            console.log(obj.name);
+            
+            //Here it will create new object
+            var obj2 = Object.create(obj);
+            obj2.name = 'sapparapu';
+            console.log(obj);
+            
+            function address(houseNo,street,city,district,state,pincode){
+                this.houseNo = houseNo;
+                this.street= street;
+                this.city = city;
+                this.district = district;
+                this.state = state;
+                this.pincode = pincode;
+            }
+            
+            function customerInformationForPassport(firstName,lastName,age,houseNo,street,city,district,state,pincode){
+                this.firstName = firstName;
+                address(houseNo,street,city,district,state,pincode);
+            }
+            
+            var passportObj = new customerInformationForPassport('Purna Chandu','Sapparapu',27,'879-5-23','Andhra Bank Street','Epur','Guntur','AP','522658');
+            console.log(passportObj);
+        </script>
+    </head>
+    <body>
+        <div>TODO write content</div>
+    </body>
+</html>

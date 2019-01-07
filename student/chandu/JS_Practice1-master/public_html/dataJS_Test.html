@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Data JS Test</title>
+        <script type="text/javascript" src="data.js"></script>
+    </head>
+    <body>
+        <table id="ordersTableId" border="1">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Item Cost</th>
+                </tr>				
+            </thead>
+            <tbody id="tbodyId">
+
+            </tbody>
+        </table>
+        <script>
+            var tbody = document.getElementById('ordersTableId').getElementsByTagName('tbody').item(0);
+            var totalCost = 0;
+            for (var i = 0; i < data.length; i++) {
+        //			 var tableRef = document.getElementById('ordersTableId').getElementsByTagName('tbody');
+        //			 var newRow = tableRef.insertRow(tableRef.rows.length);
+        //			 var newCell = newRow.insertCell(i);
+        //			 var newText = newCell.createTextNode(dataArray[i].firstName);
+                // newCell.appendChild(newText);
+                //console.log(dataArray[i].firstName);
+                var cost = 0;
+                for (var j = 0; j < 3; j++) {
+                    var newRow = document.createElement("tr");
+                    var td = document.createElement("td");
+                    td.innerText = data[i].firstName;
+                    newRow.appendChild(td);
+                    var td1 = document.createElement("td");
+                    td1.innerText = data[i].lastName;
+                    newRow.appendChild(td1);
+                    var td3 = document.createElement("td");
+                }
+                var orders = data[i].orders;
+                cost = 0;
+                for (var k = 0; k < orders.length; k++) {
+                    cost += orders[k].itemCost;
+                    totalCost += cost;
+                }
+                td3.innerText = cost;
+                newRow.appendChild(td3);
+                tbody.appendChild(newRow);
+            }
+            var totalCostTr = document.createElement("tr");
+            var td = document.createElement("td");
+            td.innerText = "Total Cost";
+            td.setAttribute("colspan", 2);
+            totalCostTr.appendChild(td);
+            var td1 = document.createElement("td");
+            td1.innerText = totalCost;
+            totalCostTr.appendChild(td1);
+            tbody.appendChild(totalCostTr)
+        </script>
+    </body>
+</html>

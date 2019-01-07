@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Promise</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function open(url){
+                return new Promise(function(resolve,reject){
+                    var req = new XMLHttpRequest();
+                    
+                    req.open('get',url,true);
+                    req.onreadystatechange = function(){
+                        if(req.status == 200 && req.readyState == 4){
+                            //console.log(req.response);
+                            resolve(req.response);
+                        }else if(req.status !== 200){
+                            reject(0);
+                        }
+                    }
+                    req.send(null);
+                });
+            }
+            
+            var promise = open('https://jsonplaceholder.typicode.com/comments');
+            promise.then(function(val){
+                console.log(""val);
+            })
+            
+        </script>
+    </head>
+    <body>
+        <div>TODO write content</div>
+    </body>
+</html>

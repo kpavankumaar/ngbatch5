@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Passport Portal</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+           function getData(){
+               
+               var firstName = document.getElementById("firstNameId").value;
+               console.log("firstName: "+firstName);
+               var lastName = document.getElementById("lastNameId").value;
+               console.log("lastName: "+lastName);
+               var gender = document.getElementById("genderId").value;
+               console.log("gender: "+gender);
+               var eMail = document.getElementById("eMailId").value;
+               console.log("eMail: "+eMail);
+               var mobileNo = document.getElementById("mobileNoId").value;
+               console.log("mobileNo: "+mobileNo);
+               var address = document.getElementById("addressId").value;
+               console.log("address: "+address);
+
+//               this.firstName = document.getElementById("firstNameId").value;
+//               console.log("firstName: "+firstName);
+//               this.lastName = document.getElementById("lastNameId").value;
+//               console.log("lastName: "+lastName);
+//               this.gender = document.getElementById("genderId").value;
+//               console.log("gender: "+gender);
+//               this.eMail = document.getElementById("eMailId").value;
+//               console.log("eMail: "+eMail);
+//               this.mobileNo = document.getElementById("mobileNoId").value;
+//               console.log("mobileNo: "+mobileNo);
+//               this.address = document.getElementById("addressId").value;
+//               console.log("address: "+address);
+               
+//               this.firstName = firstName;
+//               this.lastName = lastName;
+
+                 var passportObj = new passportObjCreation(firstName,lastName,gender,eMail,mobileNo,address);
+                 //var passportObj = new passportObjCreation('purna chandu','sapparapu','Male','purnachanducse@gmail.com','7382206934','Epur,Guntur DT,AP,522658');
+                 console.log("passportObj : "+passportObj);
+               
+           }
+           
+           function passportObjCreation(firstName,lastName,gender,eMail,mobileNo,address){
+               this.firstName = firstName;
+               this.lastName = lastName;
+               this.gender = gender;
+               this.eMail = eMail;
+               this.mobileNo = mobileNo;
+               this.address = address;
+           }
+           
+           var passportObj1 = new passportObjCreation('purna chandu','sapparapu','Male','purnachanducse@gmail.com','7382206934','Epur,Guntur DT,AP,522658');
+           console.log("passportObj1 : "+passportObj1);
+           
+//           var passportObj = new passportObjCreation();
+//           console.log("passportObj: "+passportObj);
+        </script>
+        <style>
+            table,tr{
+                display: block;
+                border: 2;
+            }
+            textarea{
+                width: 500px;
+                height: 100px;
+            }
+        </style>
+    </head>
+    <body>
+    <center>
+        <form>
+            <h4>Passport Application Form</h4>
+            <div class="container">
+                <table border="1">
+                    <tr>
+                        <th>First Name:</th>
+                        <td><input type="text" name="firstName" id="firstNameId"/></td>
+                </tr><br>
+                    <tr>
+                        <th>Last Name:</th>
+                        <td>
+                            <input type="text" name="lastName" id="lastNameId"/>
+                        </td>
+                    </tr><br>
+                    <tr>
+                        <th>Gender:</th>
+                        <td>
+                            <input type="radio" name="gender" id="genderId" value="Male"/> Male
+                        <input type="radio" name="gender" id="genderId" value="Female"/> Female
+                        <input type="radio" name="gender" id="genderId" value="Third Gender"/> Third Gender
+                        </td>
+                    </tr><br>
+                    <tr>
+                        <th>E-mail:</th>
+                        <td><input type="text" name="eMail" id="eMailId"/></td>
+                    </tr><br>
+                    <tr>
+                        <th>Mobile No:</th>
+                        <td>
+                            <input type="text" name="mobileNo" id="mobileNoId"/>
+                        </td>
+                    </tr><br>
+                    <tr>
+                        <th>Address:</th>
+                        <td><textarea name="address" id="addressId"></textarea></td>
+                    </tr>
+                    <br><br><br>
+                    <tr >
+                        <td>
+                            <input type="button" value="Submit" onclick="getData();"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+        </center>
+    </body>
+</html>

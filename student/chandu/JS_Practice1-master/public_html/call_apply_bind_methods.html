@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>CALL_APPLY_BIND</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var person = {
+                firstName: 'Purna Chandu',
+                lastName: 'sapparapu',
+                        
+            };
+            
+            var person1 = {
+                getCompleteName: function(){
+                    return this.firstName+" "+this.lastName;
+                }
+            };
+            
+            var person3 = {
+              firstName: 'Purna Chandu',
+                lastName: 'sapparapu',
+                getCompleteName: function(){
+                    return this.firstName+" "+this.lastName;
+                }
+            };
+            
+            var hobbies = {
+              getNameWithHobbies: function(outDoorGame,inDoorGame){
+                  return this.getCompleteName()+","+outDoorGame+","+inDoorGame; 
+              }  
+            };
+            
+            var example = function(){
+              console.log(this.getCompleteName()+" you made my day!")  
+            };
+            
+           // var add1 = new address('Andhra bank street','Epur','AP','India');
+            
+            console.log(person1.getCompleteName.call(person));
+            console.log(hobbies.getNameWithHobbies.apply(person3,['Cricket','Cric']));
+            
+            var newFun = example.bind(person3);
+            
+            console.log(newFun);
+            
+            console.log(person1.prototype)
+        </script>
+    </head>
+    <body>
+        <div>TODO write content</div>
+        
+    </body>
+</html>
