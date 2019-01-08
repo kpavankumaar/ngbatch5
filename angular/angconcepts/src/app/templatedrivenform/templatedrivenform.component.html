@@ -7,21 +7,21 @@
           name="email"
           required
           email
+          [ngClass] = "{'is-invalid': (emailVar.touched || emailVar.dirty) && emailVar.invalid}"
           class="form-control" 
           ngModel       
           #emailVar = "ngModel"  
           id="staticEmail" 
           placeholder="email@example.com">
-          <div class="row">
+          <div class="row" class="invalid-feedback">
             <div class="col-sm-6" *ngIf ='emailVar.errors?.required &&
                                           loginForm.controls.email.touched'>
               <span>Enter your email address</span>
             </div>
-          </div>
-          <div class = "row" *ngIf='emailVar.errors?.email'>
-              <div class="col-sm-6">
-                <span>Enter a valid email address</span>
-              </div>
+            <div class="col-sm-6" *ngIf ='emailVar.errors?.email &&
+                                          loginForm.controls.email.touched'>
+              <span>Enter a valid email address</span>
+            </div>
           </div>
       </div>
       

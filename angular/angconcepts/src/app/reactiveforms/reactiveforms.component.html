@@ -1,0 +1,15 @@
+<form class="form-inline" [FormGroup] = 'customersInformation'>
+  <div class="form-group mb-2">
+    <label for="firstname" class="sr-only">FirstName</label>
+    <input type="text" class="form-control-md" id="firstname" formControlName = 'firstName'>
+  </div>
+  <div class="form-group mb-2">
+    <label for="lastname" class="sr-only">LastName</label>
+    <input type="text" class="form-control-md" id="firstname">
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="inputPassword2" class="sr-only">Password</label>
+    <input type="password" class="form-control-md" id="inputPassword2" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+</form>
