@@ -2,7 +2,7 @@
 <form class="form-horizontal" [formGroup]='customersInformation' (ngSubmit)="customersFormDetails()">
   <div class="form-group mb-2">
     <label for="firstname" class="sr-only">FirstName</label>
-    <input class="form-control " type="text" formControlName='firstName' required minlength="3" [ngClass]="{'is-invalid': (customersInformation.controls.firstName.touched || 
+    <input class="form-control " type="text" formControlName='firstName'  [ngClass]="{'is-invalid': (customersInformation.controls.firstName.touched || 
                                   customersInformation.controls.firstName.dirty) && 
                                   !customersInformation.controls.firstName.valid
                     }"
@@ -19,10 +19,15 @@
   </div>
   <div class="form-group mb-2">
     <label for="lastname" class="sr-only">LastName</label>
-    <input class="form-control " type="text" formControlName="lastName" required minlength="3" [ngClass]="{'is-invalid': (customersInformation.get('lastName').touched || 
+    <input class="form-control " 
+      type="text" 
+      formControlName="lastName" 
+      required 
+      minlength="3" 
+      [ngClass]="{'is-invalid': (customersInformation.get('lastName').touched || 
                                   customersInformation.get('lastName').dirty) && 
                                   !customersInformation.get('lastName').valid
-                    }"
+                  }"
       id="lastname" placeholder="Lastname">
     <div class="row" class="invalid-feedback">
       <div class="col-sm-6" *ngIf='customersInformation.get("lastName").errors?.required'>
@@ -40,13 +45,22 @@
   </div>
   <div class="form-group  mb-2">
     <label for="phone" class="sr-only">Phone</label>
-    <input type="phone" class="form-control" formControlName="phone" placeholder="Phone">
+    <input  class="form-control" 
+      type="phone" 
+      formControlName="phone" 
+      [ngClass] = "{'is-invalid': (customersInformation.get('phone').touched ||
+                                  customersInformation.get('phone').dirty) &&
+                                  !customersInformation.get('phone').valid 
+                  }"
+      placeholder="Phone">
   </div>
+
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" formControlName='verify' id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
   <div *ngIf="customersInformation.get('verify').value">
+    <!-- email radio button -->
     <div class="form-group">
       <div class="form-check form-check-inline">
         <input class="form-check-input"
@@ -54,12 +68,13 @@
           id="emailchoice" 
           value="email" 
           formControlName='notification'
-          (click) = 'setNotification("email")';
+          (click) = 'setNotification("email")'
           checked>
         <label class="form-check-label" for="emailchoice">
           Email
         </label>
       </div>
+      <!-- text radio button -->
       <div class="form-check form-check-inline">
         <input class="form-check-input" 
             type="radio" 

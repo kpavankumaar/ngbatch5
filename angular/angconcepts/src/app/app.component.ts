@@ -26,7 +26,7 @@ export class AppComponent  {
   phoneNumber = 988889000;
   @Input('cityDetails') cityDetail;
   
-  streetBlurDetails() {
+  streetBlurDetails(val) {
 
   }
   updateCity(val){
