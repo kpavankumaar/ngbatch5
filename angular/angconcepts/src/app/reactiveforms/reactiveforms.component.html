@@ -39,11 +39,51 @@
       </div>
     </div>
   </div>
-  <!-- email -->
-  <div class="form-group  mb-2">
-    <label for="email" class="sr-only">Email</label>
-    <input type="email" class="form-control" formControlName="email" placeholder="Email">
+  <!-- email group -->
+  <div formGroupName = 'emailGroup'>
+    <!-- email -->
+    <div class="form-group  mb-2">
+      <label for="email" class="sr-only">Email</label>
+      <input type="email" 
+        class="form-control" 
+        formControlName="email" 
+        [ngClass] = "{'is-invalid': customersInformation.get('emailGroup.email').touched ||
+                                    customersInformation.get('emailGroup.email').dirty &&
+                                    customersInformation.get('emailGroup.email').invalid}"
+        placeholder="Email">
+      <span class="invalid-feedback">
+        <span *ngIf = 'customersInformation.get("emailGroup.email").errors.required'>
+          Email address is required 
+        </span>
+        <span *ngIf = 'customersInformation.get("emailGroup.email").errors.valid'>
+          Enter a valid Email address
+        </span>
+        
+      </span>    
+    </div>
+    <!-- confirm email -->
+    <div class="form-group  mb-2">
+      <label for="email" class="sr-only">Confirm Email</label>
+      <input type="email" 
+        class="form-control" 
+        formControlName="confirmEmail" 
+        [ngClass] = "{'is-invalid': customersInformation.get('emailGroup.confirmEmail').touched ||
+                                    customersInformation.get('emailGroup.confirmEmail').dirty &&
+                                    customersInformation.get('emailGroup.confirmEmail').invalid}"
+        placeholder="Confirm Email">
+      <span class="invalid-feedback">
+        <span *ngIf = 'customersInformation.get("emailGroup.confirmEmail").errors.required'>
+          Confirm Email address is required 
+        </span>
+        <span *ngIf = 'customersInformation.get("emailGroup.confirmEmail").errors.valid'>
+          Enter a valid Confirm Email address
+        </span>
+        
+      </span>    
+    </div>
+    <span [ngClass]= "{'invalid-feedback':true} "></span>
   </div>
+  
   <!-- phone -->
   <div class="form-group  mb-2">
     <label for="phone" class="sr-only">Phone</label>
@@ -95,16 +135,17 @@
     <div class="form-group  mb-2">
       <label for="rating" class="sr-only">Rating</label>
       <input type="number" 
-        [ngClass] = "{ 'is-invalid': true}"
+        [ngClass] = "{ 'is-invalid':  (customersInformation.get('rating').touched || 
+                                      customersInformation.get('rating').dirty) &&
+                                      customersInformation.get('rating').invalid}"
         class="form-control" 
-        min='0' 
-        max='5' 
         formControlName="rating" 
-
         placeholder="Rating">
-        <span>{{ customersInformation.get('rating') }}
-         {{ customersInformation.get('rating').valid }}
+      <span class="invalid-feedback">
+        <span *ngIf = 'customersInformation.get("rating").errors?.range'>
+          Please Enter a value between 0 and 5
         </span>
+      </span>  
     </div>
 
     
