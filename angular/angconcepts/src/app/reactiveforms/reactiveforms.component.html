@@ -57,6 +57,7 @@
       placeholder="Phone">
   </div>
 <!-- checkbox verify -->
+  
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" formControlName='verify' id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
@@ -93,7 +94,17 @@
     </div>
     <div class="form-group  mb-2">
       <label for="rating" class="sr-only">Rating</label>
-      <input type="number" class="form-control" min='0' max='5' formControlName="rating" placeholder="Rating">
+      <input type="number" 
+        [ngClass] = "{ 'is-invalid': true}"
+        class="form-control" 
+        min='0' 
+        max='5' 
+        formControlName="rating" 
+
+        placeholder="Rating">
+        <span>{{ customersInformation.get('rating') }}
+         {{ customersInformation.get('rating').valid }}
+        </span>
     </div>
 
     
