@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validator, Validators, AbstractControl } from '@angular/forms';
+import { RenderDebugInfo } from '@angular/core/src/render/api';
+import { removeDebugNodeFromIndex } from '@angular/core/src/debug/debug_node';
 
 function verifyEmail(c:AbstractControl):{ [key:string]: boolean} | null{
   var emailControl = c.get('email');
   var confirmEmailControl = c.get('confirmEmail');
-  if(emailControl.value !== confirmEmailControl.value){
-    return {'match':true}
+  if(emailControl.value === confirmEmailControl.value){
+    return null;  
   } 
-  return null;
+  return {'match':true}
 }
 
 // rating validation function
@@ -39,7 +41,7 @@ function phoneValidator(val:boolean){
 export class ReactiveformsComponent implements OnInit {
   customersInformation: FormGroup;
   constructor() { }
-  
+  color = 'red';
   customersFormDetails() { 
     console.log(this.customersInformation);
   }
@@ -48,8 +50,8 @@ export class ReactiveformsComponent implements OnInit {
       firstName: new FormControl('', [Validators.required, Validators.minLength(3)]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(3)]),
       emailGroup: new FormGroup({
-        email: new FormControl('', [Validators.email,Validators.required]),
-        confirmEmail: new FormControl('', [Validators.email,Validators.required]),
+        email: new FormControl('', [Validators.required,Validators.email]),
+        confirmEmail: new FormControl('', [Validators.required,Validators.email]),
       },verifyEmail),
       phone: new FormControl(''),
       verify: new FormControl(true),
@@ -57,6 +59,7 @@ export class ReactiveformsComponent implements OnInit {
       notification: new FormControl('')
     });
   }
+  
   setNotification(notify:string){
     const phone = this.customersInformation.get('phone');
     if( notify === 'text') {

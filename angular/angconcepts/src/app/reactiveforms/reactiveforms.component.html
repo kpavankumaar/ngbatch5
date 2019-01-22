@@ -1,4 +1,4 @@
-<h3>Reactive Form template</h3>
+<h3>Reactive Form </h3>
 <form class="form-horizontal" [formGroup]='customersInformation' (ngSubmit)="customersFormDetails()">
   <div class="form-group mb-2">
     <label for="firstname" class="sr-only">FirstName</label>
@@ -47,19 +47,19 @@
       <input type="email" 
         class="form-control" 
         formControlName="email" 
-        [ngClass] = "{'is-invalid': customersInformation.get('emailGroup.email').touched ||
-                                    customersInformation.get('emailGroup.email').dirty &&
+        
+        [ngClass] = "{'is-invalid': (customersInformation.get('emailGroup.email').touched ||
+                                    customersInformation.get('emailGroup.email').dirty) &&
                                     customersInformation.get('emailGroup.email').invalid}"
         placeholder="Email">
       <span class="invalid-feedback">
-        <span *ngIf = 'customersInformation.get("emailGroup.email").errors.required'>
+        <span *ngIf = 'customersInformation.get("emailGroup.email").errors?.required'>
           Email address is required 
         </span>
-        <span *ngIf = 'customersInformation.get("emailGroup.email").errors.valid'>
+        <span *ngIf = 'customersInformation.get("emailGroup.email").errors?.email'>
           Enter a valid Email address
         </span>
-        
-      </span>    
+      </span>  
     </div>
     <!-- confirm email -->
     <div class="form-group  mb-2">
@@ -67,22 +67,29 @@
       <input type="email" 
         class="form-control" 
         formControlName="confirmEmail" 
-        [ngClass] = "{'is-invalid': customersInformation.get('emailGroup.confirmEmail').touched ||
-                                    customersInformation.get('emailGroup.confirmEmail').dirty &&
+        [ngClass] = "{'is-invalid': (customersInformation.get('emailGroup.confirmEmail').touched ||
+                                    customersInformation.get('emailGroup.confirmEmail').dirty) &&
                                     customersInformation.get('emailGroup.confirmEmail').invalid}"
         placeholder="Confirm Email">
       <span class="invalid-feedback">
-        <span *ngIf = 'customersInformation.get("emailGroup.confirmEmail").errors.required'>
+        <span *ngIf = 'customersInformation.get("emailGroup.confirmEmail").errors?.required'>
           Confirm Email address is required 
         </span>
-        <span *ngIf = 'customersInformation.get("emailGroup.confirmEmail").errors.valid'>
+        <span *ngIf = 'customersInformation.get("emailGroup.confirmEmail").errors?.email'>
           Enter a valid Confirm Email address
         </span>
         
       </span>    
     </div>
-    <span [ngClass]= "{'invalid-feedback':true} "></span>
+    
+    <span>
+        <i [style.color] = "color" *ngIf = "customersInformation.get('emailGroup').errors?.match">
+            email and confirm email field doesnot match
+        </i>
+    </span>  
+
   </div>
+  
   
   <!-- phone -->
   <div class="form-group  mb-2">
