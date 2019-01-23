@@ -1,0 +1,165 @@
+<h3 style="align-content: center">Reactive Form Template</h3>
+<form class="form-horizantal" [formGroup]='customerInformation' (ngSubmit)='customerFormDetails()'>
+  <div class="form-group mb-2">
+    <label for="firstname" >FirstName:</label>
+    <!-- Here on class we need only as form-control else ngClass won't apply-->
+    <input type="text" 
+        class="form-control" 
+        id="firstname" 
+        formControlName = 'firstName' 
+        required
+        minlength = "3"
+        placeholder="First Name"
+        [ngClass]="{'is-invalid':(customerInformation.controls.firstName.touched || 
+                                  customerInformation.controls.firstName.dirty) &&
+                                  !customerInformation.controls.firstName.valid
+                    }"
+      >
+      <div class="row" class="invalid-feedback">
+        <div class="col-sm-6" *ngIf='customerInformation.get("firstName").errors?.required'>
+          <span>Please fill First Name</span>
+        </div>
+      </div>
+      <div class="row" class="invalid-feedback">
+        <div class="col-sm-6" *ngIf='customerInformation.get("firstName").errors?.minlength'>
+          <span>Please write atleast 3 characters of First Name</span>
+        </div>
+      </div>
+  </div>
+   <div class="form-group mb-2">
+    <label for="lastName" >LastName:</label>
+    <input 
+        type="text"
+       class="form-control" 
+       id="lastName" 
+       formControlName='lastName'
+       placeholder="Last Name"
+       minlength="3"
+       required
+       [ngClass]="{'is-invalid':(customerInformation.get('lastName').touched || 
+                                  customerInformation.get('lastName').dirty) && 
+                                  !customerInformation.get('lastName').valid
+                                  
+                  }"
+    >
+    <div class="row" class="invalid-feedback">
+      <div class="col-sm-6" *ngIf='customerInformation.get("lastName").errors?.required'>
+        <span>Please write Last Name</span>
+      </div>
+    </div>
+    <div class="row" class="invalid-feedback">
+      <div class="col-sm-6" *ngIf='customerInformation.get("lastName").errors?.minlength'>
+        <span>Please enter atleast 3 characters for Last Name</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- email group -->
+  <div formGroupName = 'emailGroup'>
+    <!-- email -->
+    <div class="form-group  mb-2">
+      <label for="email" class="sr-only">Email</label>
+      <input type="email" 
+        class="form-control" 
+        formControlName="email" 
+        
+        [ngClass] = "{'is-invalid': (customerInformation.get('emailGroup.email').touched ||
+        customerInformation.get('emailGroup.email').dirty) &&
+        customerInformation.get('emailGroup.email').invalid}"
+        placeholder="Email">
+      <span class="invalid-feedback">
+        <span *ngIf = 'customerInformation.get("emailGroup.email").errors?.required'>
+          Email address is required 
+        </span>
+        <span *ngIf = 'customerInformation.get("emailGroup.email").errors?.email'>
+          Enter a valid Email address
+        </span>
+      </span>  
+    </div>
+    <!-- confirm email -->
+    <div class="form-group  mb-2">
+      <label for="email" class="sr-only">Confirm Email</label>
+      <input type="email" 
+        class="form-control" 
+        formControlName="confirmEmail" 
+        [ngClass] = "{'is-invalid': (customerInformation.get('emailGroup.confirmEmail').touched ||
+        customerInformation.get('emailGroup.confirmEmail').dirty) &&
+        customerInformation.get('emailGroup.confirmEmail').invalid}"
+        placeholder="Confirm Email">
+      <span class="invalid-feedback">
+        <span *ngIf = 'customerInformation.get("emailGroup.confirmEmail").errors?.required'>
+          Confirm Email address is required 
+        </span>
+        <span *ngIf = 'customerInformation.get("emailGroup.confirmEmail").errors?.email'>
+          Enter a valid Confirm Email address
+        </span>
+        
+      </span>    
+    </div>
+    
+  </div>
+
+  <!-- phone -->
+  <div class="form-group mb-2">
+    <label>Phone:</label>
+    <input type="number" class="form-control" formControlName="phone" placeholder="Phone" ng-minlength="10" ng-maxlength="10">
+  </div>
+   <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" formControlName="verify" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <div *ngIf="customerInformation.get('verify').value">
+      <div class="form-group">
+          <div class="form-check form-check-inline">
+            <input 
+                type="radio" 
+                class="form-check-input" 
+                id="emailChoice" 
+                value="email" 
+                
+                formControlName="notification"
+                (change) = 'setNotification("email")'
+                checked
+            >
+            <label class="form-check-label" for="emailchoice">Email</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input 
+              type="radio" 
+              class="form-check-input" 
+              id="phoneChoice" 
+              value="text" 
+              
+              formCOntrolName="notification"
+              (change)='setNotification("text")'
+            >
+            <label class="form-check-label" for="exampleRadios2">Text</label>
+          </div>
+      </div>
+      <div class="form-group mb-2">
+        <label for="rating" class="sr-only">Rating</label>
+        <input type="number" class="form-control" min="0" max="5" formControlName="rating" placeholder="Rating">
+      </div>
+      <div *ngIf="customerInformation.get('verify').value">
+        <div class="form-group">
+          <input type="text" class="form-control" required id="street1" name="street1" placeholder="Enter Street1">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" required id="street2" name="street2" placeholder="Enter Street2">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" required id="city" name="city" placeholder="City">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" required id="state" name="state" placeholder="State"> 
+        </div>
+    <div class="form-group">
+      <input type="text" class="form-control" required id="zipcode" name="zipcode" placeholder="Zipcode">
+    </div>
+  </div>
+</div> 
+  
+  
+  
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+</form>

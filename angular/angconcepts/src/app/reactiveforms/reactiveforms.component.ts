@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validator, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, Validator, Validators, AbstractControl, FormBuilder } from '@angular/forms';
 import { RenderDebugInfo } from '@angular/core/src/render/api';
 import { removeDebugNodeFromIndex } from '@angular/core/src/debug/debug_node';
 
@@ -40,24 +40,36 @@ function phoneValidator(val:boolean){
 })
 export class ReactiveformsComponent implements OnInit {
   customersInformation: FormGroup;
-  constructor() { }
+  constructor(private fb:FormBuilder) { }
   color = 'red';
   customersFormDetails() { 
     console.log(this.customersInformation);
   }
   ngOnInit() {
-    this.customersInformation = new FormGroup({
-      firstName: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      lastName: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      emailGroup: new FormGroup({
-        email: new FormControl('', [Validators.required,Validators.email]),
-        confirmEmail: new FormControl('', [Validators.required,Validators.email]),
+    this.customersInformation = this.fb.group({
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
+      emailGroup: this.fb.group({
+        email: ['', [Validators.required,Validators.email]],
+        confirmEmail: ['', [Validators.required,Validators.email]],
       },verifyEmail),
-      phone: new FormControl(''),
-      verify: new FormControl(true),
-      rating: new FormControl('', ratingRange(0,5)),
-      notification: new FormControl('')
+      phone: [''],
+      verify: [true],
+      rating: ['', ratingRange(0,5)],
+      notification: ['']
     });
+    // this.customersInformation = new FormGroup({
+    //   firstName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    //   lastName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    //   emailGroup: new FormGroup({
+    //     email: new FormControl('', [Validators.required,Validators.email]),
+    //     confirmEmail: new FormControl('', [Validators.required,Validators.email]),
+    //   },verifyEmail),
+    //   phone: new FormControl(''),
+    //   verify: new FormControl(true),
+    //   rating: new FormControl('', ratingRange(0,5)),
+    //   notification: new FormControl('')
+    // });
   }
   
   setNotification(notify:string){

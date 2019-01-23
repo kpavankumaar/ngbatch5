@@ -12,4 +12,8 @@ export class TemplatedrivenformComponent implements OnInit {
   ngOnInit() {
   }
 
+  loginDetails(formDetails){
+    console.log(formDetails);
+  }
+
 }
