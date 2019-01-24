@@ -1,1 +1,10 @@
-<app-customers></app-customers>
+<app-navbar (pageLoad) = "choosePageLoad($event)"></app-navbar>
+<div *ngIf = 'customersPageLoadFlag'>
+    <app-customers></app-customers>
+</div>
+
+<div *ngIf = 'ordersPageLoagFlag'>
+    <app-orders></app-orders>
+</div>
+    
+
