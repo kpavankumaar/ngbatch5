@@ -7,6 +7,8 @@ import { CustomersModule } from './customers/customers.module';
 
 import { CoreModule } from './core/core.module';
 import { OrdersModule } from './orders/orders.module';
+import { RouterModule } from '@angular/router';
+import { route } from './route';
 
 
 @NgModule({
@@ -14,7 +16,7 @@ import { OrdersModule } from './orders/orders.module';
     AppComponent
   ],
   imports: [
-    BrowserModule, CoreModule, CustomersModule, OrdersModule
+    BrowserModule, CoreModule, CustomersModule, OrdersModule, RouterModule.forRoot(route,{ enableTracing: true })
   ],
   providers: [],
   bootstrap: [AppComponent]
