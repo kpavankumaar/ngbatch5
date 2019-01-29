@@ -10,4 +10,8 @@ import { RouterModule } from '@angular/router';
   declarations: [NavbarComponent],
   exports:[NavbarComponent]
 })
-export class CoreModule { }
+export class CoreModule { 
+  constructor(){
+    console.log('core module');
+  }
+}

@@ -16,7 +16,11 @@ import { route } from './route';
     AppComponent
   ],
   imports: [
-    BrowserModule, RouterModule.forRoot(route,{ enableTracing: true }) , CoreModule, CustomersModule, OrdersModule
+    BrowserModule, 
+    RouterModule.forRoot(route), 
+    CoreModule, 
+    CustomersModule, 
+    OrdersModule
   ],
   providers: [],
   bootstrap: [AppComponent]
