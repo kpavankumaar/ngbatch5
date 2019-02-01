@@ -9,4 +9,8 @@ import { OrdersComponent } from './orders.component';
   declarations: [OrdersComponent],
   exports:[OrdersComponent]
 })
-export class OrdersModule { }
+export class OrdersModule {
+  constructor(){
+    console.log('orders module');
+  }
+ }

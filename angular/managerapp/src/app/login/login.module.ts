@@ -7,4 +7,8 @@ import { CommonModule } from '@angular/common';
   ],
   declarations: []
 })
-export class LoginModule { }
+export class LoginModule { 
+  constructor(){
+    console.log('login module');
+  }
+}

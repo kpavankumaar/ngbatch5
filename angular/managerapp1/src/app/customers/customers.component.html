@@ -8,4 +8,18 @@
   
 </p>
 <router-outlet></router-outlet> -->
-<app-customers-card></app-customers-card>
+<nav >
+  <a (click) = "pageLoad('card')">
+    cardView
+  </a>
+  <a (click) = "pageLoad('list')">
+    listView
+  </a>
+</nav>
+<div *ngIf='cardStatus'>
+  <app-customers-card></app-customers-card>
+</div>
+<div *ngIf='listStatus'>
+  <app-customers-grid></app-customers-grid>
+</div>
+

@@ -1,4 +1,4 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { NgModule } from '@angular/core';
 const route:Routes =[
     {path:'customers',loadChildren :'./customers/customers.module#CustomersModule'},
@@ -6,7 +6,7 @@ const route:Routes =[
 ]
 
 @NgModule({
-    imports:[RouterModule.forRoot(route)],
+    imports:[RouterModule.forRoot(route,{preloadingStrategy:PreloadAllModules})],
     exports:[RouterModule]
 })
 

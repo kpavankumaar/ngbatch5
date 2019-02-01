@@ -12,4 +12,8 @@ import { RouterModule } from '@angular/router';
   declarations: [CustomersComponent, CustomersCardComponent,  CustomersGridComponent],
   exports:[CustomersComponent],
 })
-export class CustomersModule { }
+export class CustomersModule {
+  constructor(){
+    console.log('customers module');
+  }
+ }
