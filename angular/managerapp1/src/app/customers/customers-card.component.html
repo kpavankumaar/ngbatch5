@@ -1,3 +1,8 @@
-<p>
-  customers-card works!
-</p>
+<div>
+  <ul>
+    <li *ngFor="let item of userData">
+      {{item}}
+    </li>
+  </ul>
+</div>
+<button (click) = 'clickEvent()'>click me </button>

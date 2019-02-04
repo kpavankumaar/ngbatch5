@@ -11,5 +11,7 @@ export class CustomersGridComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  ngOnChanges(){
+    console.log('customers grid component on change detection ')
+  }
 }

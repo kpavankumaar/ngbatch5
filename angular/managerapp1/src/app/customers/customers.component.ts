@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { DataService } from '../core/services/data.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { DataService } from '../core/services/data.service';
   styleUrls: ['./customers.component.css'],
   providers:[DataService]
 })
-export class CustomersComponent implements OnInit {
+export class CustomersComponent implements OnInit, OnChanges {
   cardStatus:boolean;
   listStatus:boolean;
   pageLoad(choosePage:string){
@@ -19,12 +19,18 @@ export class CustomersComponent implements OnInit {
       this.listStatus = true;
     }
   }
-  
+  data;
   constructor(private dataService: DataService) {
-    console.log(dataService.getSampleData());
+    
    }
-
   ngOnInit() {
+    // this.data = this.dataService.getSampleData();  
+    this.data = this.dataService.getCustomersData().subscribe(res => {
+      console.log(res);
+      
+    })
   }
-  
+  ngOnChanges(){
+    console.log('customers component on change detection');
+  }
 }
