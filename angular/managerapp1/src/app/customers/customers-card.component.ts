@@ -13,7 +13,7 @@ export class CustomersCardComponent implements OnInit,OnChanges {
   }
   
   ngOnChanges(){
-    console.log('customers card component on change detection ')
+    console.log('customers card component on change detection ', this.userData)
   }
   clickEvent(){
     console.log('click event from card component');

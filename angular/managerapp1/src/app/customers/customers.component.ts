@@ -25,8 +25,9 @@ export class CustomersComponent implements OnInit, OnChanges {
    }
   ngOnInit() {
     // this.data = this.dataService.getSampleData();  
-    this.data = this.dataService.getCustomersData().subscribe(res => {
+    this.dataService.getCustomersData().subscribe(res => {
       console.log(res);
+      this.data = res;
       
     })
   }
