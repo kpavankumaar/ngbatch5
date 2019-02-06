@@ -3,13 +3,13 @@
     <div class="col-sm-4" *ngFor="let item of userData" >
       <div class="card">
         <div class="card-header">
-          <a >{{item.firstName | uppercase }} {{item.lastName | uppercase}}</a>
-          <a >Edit</a>
+          <a [routerLink] = "['/customers',item.id,'details']">{{item.firstName | uppercase }} {{item.lastName | uppercase}}</a>
+          <a [routerLink] = "['/customers',item.id,'edit']">Edit</a>
         </div>
         <div class="card-body">
           <h5 class="card-title">Special title treatment</h5>
           <p class="card-text">Gender {{item.gender}}</p>
-          <a href="#" class="btn btn-primary">View Orders</a>
+          <a class="btn btn-primary" [routerLink]="['/customers',item.id,'orders']" >View Orders</a>
         </div>
       </div>
     </div>
