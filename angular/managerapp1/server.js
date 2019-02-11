@@ -113,7 +113,7 @@ app.post('/api/auth/logout', (req, res) => {
 
 // redirect all others to the index (HTML5 history)
 app.all('/*', function (req, res) {
-    res.sendFile(__dirname + '/dist/managerapp/index.html');
+    res.sendFile(__dirname + '/dist/index.html');
 });
 
 app.listen(3000);
