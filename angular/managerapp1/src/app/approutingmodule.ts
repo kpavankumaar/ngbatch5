@@ -5,6 +5,7 @@ const route:Routes =[
     {path:'customers/:id',loadChildren :'./customer/customer.module#CustomerModule'},
     {path:'customers',loadChildren :'./customers/customers.module#CustomersModule'},
     {path:'orders',loadChildren:'./orders/orders.module#OrdersModule'},
+    {path:'login',loadChildren:'./login/login.module#LoginModule'}
 ]
 
 @NgModule({
