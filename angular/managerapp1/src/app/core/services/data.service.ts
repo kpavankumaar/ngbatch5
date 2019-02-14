@@ -20,5 +20,9 @@ export class DataService {
       map(res => res)
     )
   }
+  // /api/auth/login
+  login(loginDetails){
+    return this.http.post('/api/auth/login',loginDetails)
+  }
 
 }

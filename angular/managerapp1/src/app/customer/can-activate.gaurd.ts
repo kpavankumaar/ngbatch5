@@ -6,12 +6,15 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class CanActivateGaurd implements CanActivate {
     constructor(private router:Router){}
-    canActivate(route:ActivatedRouteSnapshot,state:RouterStateSnapshot):Observable<boolean> | boolean{
-        if(false){
-            return true;
-        }
-        this.router.navigate(['/login']);
-        return false;
+    canActivate(route:ActivatedRouteSnapshot,state:RouterStateSnapshot){
+    //     if(true){
+            
+    //         return true;
+    //     }
+    //     this.router.navigate(['/login']);
+    //     // return false;
+    
+    this.router.navigate(['/login']);
+    return false;
     }
-
 }

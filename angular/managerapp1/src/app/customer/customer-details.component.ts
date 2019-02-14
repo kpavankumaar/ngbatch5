@@ -18,6 +18,7 @@ export class CustomerDetailsComponent implements OnInit {
     let id ;
     this.activatedRoute.parent.params.subscribe(
       (params) =>{
+        console.log(params);
         id = params['id'];
       },
       (err)=> {console.log(err)},
