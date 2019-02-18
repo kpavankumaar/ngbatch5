@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { CustomerI } from '../models/customersTypeDef';
 @Injectable()
 export class DataService {
-
+  loginLogoutFlag:boolean = false;
   constructor(private http:HttpClient) { }
   getSampleData(){
     return   ['krishna','arjuna']
@@ -22,7 +22,9 @@ export class DataService {
   }
   // /api/auth/login
   login(loginDetails){
-    return this.http.post('/api/auth/login',loginDetails)
+    return this.http.post('/api/auth/login',loginDetails);
   }
+  
+
 
 }

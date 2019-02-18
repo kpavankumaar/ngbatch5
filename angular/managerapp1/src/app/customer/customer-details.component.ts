@@ -27,6 +27,7 @@ export class CustomerDetailsComponent implements OnInit {
     this.dataService.getCustomerData(id).subscribe((customer)=>{
       this.customer = customer;
     })
+    
   }
 
 }
