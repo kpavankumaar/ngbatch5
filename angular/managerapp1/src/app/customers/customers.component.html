@@ -17,7 +17,7 @@
   </a>
 </nav>
 <div *ngIf='cardStatus'>
-  <app-customers-card></app-customers-card>
+  <app-customers-card [userData] = "data"></app-customers-card>
 </div>
 <div *ngIf='listStatus'>
   <app-customers-grid></app-customers-grid>
