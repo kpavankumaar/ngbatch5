@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { DataService } from './services/data.service';
 
 @NgModule({
   imports: [
@@ -10,7 +11,7 @@ import { AuthService } from './services/auth.service';
   ],
   declarations: [NavbarComponent],
   exports:[NavbarComponent],
-  providers:[AuthService]
+  providers:[AuthService,DataService]
 })
 export class CoreModule { 
   constructor(){

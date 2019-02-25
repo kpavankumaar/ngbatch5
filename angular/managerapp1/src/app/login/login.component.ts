@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers:[DataService,AuthService]
+  
 })
 export class LoginComponent implements OnInit {
   loginForm;
@@ -35,12 +35,25 @@ export class LoginComponent implements OnInit {
 }
 
 submit({ value, valid }: { value, valid: boolean }) {
+    console.log(this.authService.redirectUrl);
+    
     this.dataService.login(value).subscribe((status: boolean) => {
             if (status) {
-              console.log('this.authservice.redirecturl',this.authService.redirectUrl);
-              this.router.navigate([this.authService.redirectUrl]);
-            } else {
+              console.log('this.authservice.redirecturl',this.authService.redirectUrl, typeof this.authService.redirectUrl, 'id', this.authService.id);
+              if(this.authService.redirectUrl){
+                // update the login status in authService.loggedIn 
+                // if you fail to do this canActivate method will redirect to login page 
+                // because canActivate routeGaurd will stop from loading the edit page
+                this.authService.logedIn = status;
+                const url = this.authService.redirectUrl;
+                this.authService.redirectUrl = ""
+                this.router.navigateByUrl(url);
+              }else{
                 this.router.navigate(['/customers']);
+              }
+              
+            }else{
+              console.log('unable to login');
             }
         })
     };
