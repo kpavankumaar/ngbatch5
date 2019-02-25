@@ -72,9 +72,9 @@ export class ReactiveformsComponent implements OnInit {
     // });
   }
   
-  setNotification(notify:string){
+  setNotification(notify: string) {
     const phone = this.customersInformation.get('phone');
-    if( notify === 'text') {
+    if ( notify === 'text') {
       phone.setValidators([Validators.required, Validators.minLength(10), Validators.maxLength(10)]);
     } else {
       phone.clearValidators();
