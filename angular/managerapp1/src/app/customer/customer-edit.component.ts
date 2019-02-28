@@ -42,6 +42,7 @@ export class CustomerEditComponent implements OnInit {
     // console.log("this.state url value ", this.state.url);
     this.dataService.getCustomerData(this.id).subscribe((res) => {
         console.log(res);
+
         this.customer.id = res.id;
         this.customer.firstName = res.firstName;
         this.customer.lastName = res.lastName;
@@ -53,9 +54,28 @@ export class CustomerEditComponent implements OnInit {
     })
   }
   submit(){
+    if(this.customer.id === 0){
+      this.dataService.insertCustomer(this.customer).subscribe((insertedCustomer)=>{
+        if(insertedCustomer){
+          console.log('add new customer to customers list ')
+        } else{
+          console.log('unable to upload the customers data');
+        }
+      }) 
+    }else{
+      this.dataService.updateCustomer(this.customer).subscribe((status:boolean) => {
+          if(status){
+            console.log('updated the custmers details ')
+
+          }else{
+            console.log('error updating customer details ')
+          }
+      })
+    }
   }
   delete(){
   }
   cancel(){
+    
   }
 }

@@ -1,0 +1,18 @@
+<div class="container" *ngIf ="!!userData">
+  <div class="row" >
+    <div class="col-sm-4" *ngFor="let item of userData" >
+      <div class="card">
+        <div class="card-header">
+          <a [routerLink]="['/customers',item.id,'details']">{{item.firstName | uppercase }} {{item.lastName | uppercase}}</a>
+          <a [routerLink]="['/customers',item.id,'edit']">Edit</a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">Gender {{item.gender}}</p>
+          <a href="#" class="btn btn-primary">View Orders</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button (click) = 'clickEvent()'>click me </button>
