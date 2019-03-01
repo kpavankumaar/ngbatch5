@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IState, ICustomer } from '../core/interfaces';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../core/services/data.service';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-customer-edit',
@@ -10,7 +12,7 @@ import { DataService } from '../core/services/data.service';
 })
 
 export class CustomerEditComponent implements OnInit {
-  
+  @ViewChild('customerForm') customerForm:NgForm;
   customer:ICustomer = {
       id: 0,
       firstName: '',
@@ -29,7 +31,7 @@ export class CustomerEditComponent implements OnInit {
   operationText = 'Insert';
   url:string;
   id:number;
-  constructor( private dataService : DataService, private activatedRouter:ActivatedRoute) {}
+  constructor( private router:Router,private dataService : DataService, private activatedRouter:ActivatedRoute) {}
 
   ngOnInit() {
     console.log('this.activatedRouter',this.activatedRouter)
@@ -40,6 +42,8 @@ export class CustomerEditComponent implements OnInit {
     })
     // this.url = this.state.url
     // console.log("this.state url value ", this.state.url);
+
+    // response from the  server to load the initial data of the customer
     this.dataService.getCustomerData(this.id).subscribe((res) => {
         console.log(res);
 
@@ -66,16 +70,31 @@ export class CustomerEditComponent implements OnInit {
       this.dataService.updateCustomer(this.customer).subscribe((status:boolean) => {
           if(status){
             console.log('updated the custmers details ')
-
+            this.router.navigate(['/customers']);
           }else{
             console.log('error updating customer details ')
           }
       })
     }
   }
+  // this method is called from canDeactivateGaurd
+  canDeactivate(){
+    // if value of atleast one field is changed then dirty is true so confirm with the user if he wants to leave the page 
+    if(this.customerForm.dirty){
+      let response = confirm('are you willing to leave the page');
+      if(response){
+        return true;
+      }else{
+        return false;
+      }
+    }
+    // allow the redirect to customers page 
+    return true;
+  }
   delete(){
   }
-  cancel(){
-    
+  cancel(val){
+    // redirecting the page and canDeactivate is trigered 
+      this.router.navigate(['/customers']);
   }
 }

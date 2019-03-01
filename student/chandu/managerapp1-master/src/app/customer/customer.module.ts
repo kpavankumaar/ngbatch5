@@ -7,9 +7,10 @@ import { CustomerOrdersComponent } from './customer-orders.component';
 import { RoutingModule } from './routing.module';
 
 @NgModule({
-  declarations: [CustomerComponent,CustomerDetailsComponent,CustomerEditComponent,CustomerOrdersComponent],
   imports: [
     CommonModule,RoutingModule
-  ]
+  ],
+  declarations: [CustomerComponent,CustomerDetailsComponent,CustomerEditComponent,CustomerOrdersComponent],
+  
 })
 export class CustomerModule { }

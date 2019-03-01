@@ -26,7 +26,7 @@ const route:Routes =[
 @NgModule({
   imports: [RouterModule.forChild(route)],
   exports:[RouterModule],
-  providers:[CanActivateGaurd]
+  providers:[CanActivateGaurd,CanDeactivateGaurd]
 })
 export class RoutingModule {
   static component = [CustomerComponent,CustomerDetailsComponent,CustomerEditComponent,CustomerOrdersComponent]

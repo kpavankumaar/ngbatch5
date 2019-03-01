@@ -8,6 +8,7 @@ export class CanDeactivateGaurd implements CanDeactivate<CustomerEditComponent>{
     canDeactivate(component:CustomerEditComponent,
         route:ActivatedRouteSnapshot, 
         state:RouterStateSnapshot): boolean{
-            return false;
+        return component.canDeactivate()
     }
+    
 }
