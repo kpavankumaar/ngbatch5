@@ -12,8 +12,9 @@ import { NgForm } from '@angular/forms';
 })
 
 export class CustomerEditComponent implements OnInit {
-  @ViewChild('customerForm') customerForm:NgForm;
-  customer:ICustomer = {
+  @ViewChild('customerForm') customerForm: NgForm;
+  
+  customer: ICustomer = {
       id: 0,
       firstName: '',
       lastName: '',
@@ -29,17 +30,17 @@ export class CustomerEditComponent implements OnInit {
   errorMessage: string;
   deleteMessageEnabled: boolean;
   operationText = 'Insert';
-  url:string;
-  id:number;
-  constructor( private router:Router,private dataService : DataService, private activatedRouter:ActivatedRoute) {}
+  url: string;
+  id: number;
+  constructor( private router: Router, private dataService : DataService, private activatedRouter: ActivatedRoute) {}
 
   ngOnInit() {
-    console.log('this.activatedRouter',this.activatedRouter)
+    console.log('this.activatedRouter', this.activatedRouter)
 
     this.activatedRouter.parent.params.subscribe((response) => {
-      console.log("response",response.id);
+      console.log("response", response.id);
       this.id = response.id;
-    })
+    });
     // this.url = this.state.url
     // console.log("this.state url value ", this.state.url);
 
@@ -56,45 +57,53 @@ export class CustomerEditComponent implements OnInit {
         this.customer.state.abbreviation = res.state.abbreviation;
         this.customer.state.name = res.state.name;
     })
+    // get states 
+    this.dataService.getStatesData().subscribe((stateData) => {
+      this.states = stateData;
+    });
   }
-  submit(){
-    if(this.customer.id === 0){
-      this.dataService.insertCustomer(this.customer).subscribe((insertedCustomer)=>{
-        if(insertedCustomer){
+  submit() {
+    if (this.customer.id === 0) {
+      this.dataService.insertCustomer(this.customer).subscribe((insertedCustomer) => {
+        if (insertedCustomer) {
           console.log('add new customer to customers list ')
-        } else{
+        } else {
           console.log('unable to upload the customers data');
         }
-      }) 
-    }else{
-      this.dataService.updateCustomer(this.customer).subscribe((status:boolean) => {
-          if(status){
+      });
+    } else {
+      this.dataService.updateCustomer(this.customer).subscribe((status: boolean) => {
+          if (status) {
             console.log('updated the custmers details ')
             this.router.navigate(['/customers']);
-          }else{
+          } else {
             console.log('error updating customer details ')
           }
-      })
+      });
     }
   }
   // this method is called from canDeactivateGaurd
   canDeactivate(){
-    // if value of atleast one field is changed then dirty is true so confirm with the user if he wants to leave the page 
-    if(this.customerForm.dirty){
+    // if value of atleast one field is changed then dirty is true so confirm with the user if he wants to leave the page
+    if (this.customerForm.dirty){
       let response = confirm('are you willing to leave the page');
-      if(response){
+      if (response){
         return true;
       }else{
         return false;
       }
     }
-    // allow the redirect to customers page 
+    // allow the redirect to customers page
     return true;
   }
-  delete(){
+  delete() {
+    this.dataService.deleteCustomerData(this.customer).subscribe((res) => {
+      console.log('response');
+    });
+    this.router.navigate(['/customers']);
   }
   cancel(val){
-    // redirecting the page and canDeactivate is trigered 
+    // redirecting the page and canDeactivate is trigered
       this.router.navigate(['/customers']);
   }
 }

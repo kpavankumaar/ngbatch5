@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm;
+  errorMessage;
   constructor(private dataService:DataService, 
               private authService:AuthService,
               private formBuilder: FormBuilder,
